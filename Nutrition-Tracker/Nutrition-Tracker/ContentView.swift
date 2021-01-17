@@ -24,19 +24,22 @@ import SQLite3
 
 struct ContentView: View {
     init(){
-        db = openDatabase()
+        
     }
     
     @State private var page: String? = nil
     @State private var calories: Int = 0
     
-    @State var caloriesRemainingToday: Double = 2200.0
+    @State var caloriesGoalPerDay: Double = 2000.0
+    @State var caloriesRemainingToday: Double = 2000.0
     @State var caloriesToday: Double = 0.0
     
     @State var db: Any?
 
     var body: some View {
          
+        
+        
         //let screenRect = UIScreen.main.bounds
         //let screenWidth = screenRect.width
         //let screenHeight = screenRect.height
@@ -115,8 +118,13 @@ struct ContentView: View {
                     Spacer()
                 }
                 
+            }.onAppear{
+                caloriesRemainingToday = Double(getCaloriesRemainingToday())
+                caloriesToday = Double(getCaloriesConsumedToday())
+                caloriesGoalPerDay = Double(getCaloriesPerDay())
             }
         }
+    
     }
 }
 

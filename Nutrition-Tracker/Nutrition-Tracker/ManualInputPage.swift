@@ -15,7 +15,8 @@ struct ManualInputPage: View {
     @State var calories: String = ""
     @State var desiredDailyCalories:Double = 0
     @State var inputDesiredDailyCalories: String = ""
-    let caloriesPerDay: Double = 2200.0
+    
+    @State var caloriesGoalPerDay: Double = 2200.0
     
     @State var caloriesRemainingToday: Double = 2200.0
     @State var caloriesToday: Double = 0.0
@@ -86,6 +87,8 @@ struct ManualInputPage: View {
                         caloriesToday += newCalories
                         caloriesRemainingToday -= newCalories
                         
+                        setCaloriesConsumedToday(input: caloriesToday)
+                        setCaloriesRemainingToday(input: caloriesRemainingToday)
                         
                         //Logic for actually recording this information
                         print(currentDayTime)
@@ -105,6 +108,11 @@ struct ManualInputPage: View {
             
             
             
+        }
+        .onAppear{
+            caloriesRemainingToday = Double(getCaloriesRemainingToday())
+            caloriesToday = Double(getCaloriesConsumedToday())
+            caloriesGoalPerDay = Double(getCaloriesPerDay())
         }
         
     }
