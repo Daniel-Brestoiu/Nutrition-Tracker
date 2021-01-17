@@ -15,13 +15,17 @@ struct ContentView: View {
     @State private var page: String? = nil
     @State private var calories: Int = 0
     
+    
+    
     var body: some View {
         //let screenRect = UIScreen.main.bounds
         //let screenWidth = screenRect.width
         //let screenHeight = screenRect.height
         let textColor = hexToUIColor(hex: "0008ff")
+        let brightTextColor = hexToUIColor(hex: "#7aa0ff")
         //let bgColor = hexToUIColor(hex: "#C1E5FF")
         //let bgColor = hexToUIColor(hex: "#edf6ff")
+    
         
         NavigationView{
             
@@ -30,21 +34,20 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 HStack{
-                    NavigationLink(destination: SecondPage(), tag: "Home", selection: $page) {}
-                    NavigationLink(destination: Text("Settings page"), tag: "Settings", selection: $page) {}
+                    NavigationLink(destination: GoalManagementPage(), tag: "Goals", selection: $page) {}
+                    NavigationLink(destination: SettingsPage(), tag: "Settings", selection: $page) {}
                         
                         .navigationBarItems(
                             leading:
-                                Button("Home"){
-                                    self.page = "Home"
+                                Button("Goals"){
+                                    self.page = "Goals"
                                 },
                             trailing:
                                 Button("Settings"){
                                     self.page = "Settings"
                                 })
                 }
-                
-                
+
                 VStack(){
                     VStack(){
                         Text("Nutrition Tracker")
@@ -54,31 +57,32 @@ struct ContentView: View {
                             .foregroundColor(Color(textColor))
                     }.padding(.top, 5)
                     .padding(.trailing, 15)
-                    
+                
                     Spacer()
-                    
                     //Pi Chart
                     PieChartView(data: [5,10],
                                  title: "Calories Consumed")
-                        .frame(width:250, height: 250 )
+                        .frame(width:300, height: 300)
                     
                     Spacer()
                     
                     VStack{
-                        NavigationLink(destination: Text("Manual Input page"), tag: "Manual Input", selection: $page) {EmptyView()}
-                        NavigationLink(destination: Text("Fast Food Input page"), tag: "Fast Food Input", selection: $page) {EmptyView()}
-                        NavigationLink(destination: Text("Statistics page"), tag: "Statistics", selection: $page) {EmptyView()}
+                        NavigationLink(destination: ManualInputPage(), tag: "Manual Input", selection: $page) {EmptyView()}
+                        NavigationLink(destination: FoodAutomaticInputPage(), tag: "Fast Food Input", selection: $page) {EmptyView()}
+                        NavigationLink(destination: StatisticsPage(), tag: "Statistics", selection: $page) {EmptyView()}
                         
                         Button("Manual Input"){
                             self.page = "Manual Input"
                         }
                         .frame(width: 200, height:20)
+                        .foregroundColor(Color(brightTextColor))
                         .padding(.bottom, 15)
                         
                         Button("Food Automatic Input"){
                             self.page = "Fast Food Input"
                         }
                         .frame(width: 200, height:20)
+                        .foregroundColor(Color(brightTextColor))
                         .padding(.bottom, 15)
                         
                         
@@ -86,11 +90,10 @@ struct ContentView: View {
                             self.page = "Statistics"
                         }
                         .frame(width: 200, height:20)
+                        .foregroundColor(Color(brightTextColor))
                         .padding(.bottom, 50)
                     }
-                    
-                    
-                    
+                    Spacer()
                 }
                 
             }
@@ -128,4 +131,3 @@ func hexToUIColor(hex:String) -> UIColor{
         alpha: CGFloat(1.0)
     )
 }
-
