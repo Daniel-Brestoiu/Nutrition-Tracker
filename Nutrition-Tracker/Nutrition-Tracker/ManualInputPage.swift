@@ -13,7 +13,8 @@ import Combine
 struct ManualInputPage: View {
     @State var foodItem: String = ""
     @State var calories: String = ""
-    
+    @State var desiredDailyCalories:Double = 0
+    @State var inputDesiredDailyCalories: String = ""
     let caloriesPerDay: Double = 2200.0
     
     @State var caloriesRemainingToday: Double = 2200.0
@@ -29,6 +30,23 @@ struct ManualInputPage: View {
         ZStack(){
             Form{
                 VStack{
+                    HStack{
+                        Text( "Number of Daily Calories:")
+                            .font(.callout)
+                            .bold()
+                        
+                        TextField("Calories", text: $inputDesiredDailyCalories)
+                            .multilineTextAlignment(.trailing)
+                            .onReceive(Just(inputDesiredDailyCalories)){
+                                newValue in
+                                let filtered = newValue.filter{"0123456789".contains($0)}
+                                if filtered != newValue{
+                                    self.inputDesiredDailyCalories = filtered
+                                }
+                            }
+                    }
+                    Divider()
+                    
                     HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/){
                         Text("Food Item:")
                             .font(.callout)
@@ -47,6 +65,7 @@ struct ManualInputPage: View {
                         
                         TextField("Calories", text: $calories)
                             .multilineTextAlignment(.trailing)
+                            .keyboardType(.default)
                             .onReceive(Just(calories)){
                                 newValue in
                                 let filtered = newValue.filter{"0123456789".contains($0)}
@@ -81,6 +100,7 @@ struct ManualInputPage: View {
             PieChartView(data: [caloriesToday, caloriesRemainingToday],
                          title: "Calories Consumed")
                 .frame(width:300, height: 300)
+                .padding(.top, 100)
 
             
             
