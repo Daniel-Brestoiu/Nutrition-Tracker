@@ -40,6 +40,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6577FE1F25B46401003173C1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		651DEFE625B3DB9700597966 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		651DEFEB25B3DCF300597966 /* ManualInputPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualInputPage.swift; sourceTree = "<group>"; };
@@ -162,6 +175,7 @@
 				6599754425B36B0C00D582B5 /* Sources */,
 				6599754525B36B0C00D582B5 /* Frameworks */,
 				6599754625B36B0C00D582B5 /* Resources */,
+				6577FE1F25B46401003173C1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

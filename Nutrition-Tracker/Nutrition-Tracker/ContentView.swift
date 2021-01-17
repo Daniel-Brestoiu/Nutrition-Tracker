@@ -62,7 +62,6 @@ struct ContentView: View {
                         .navigationBarItems(
                             leading:
                                 Button("Goals"){
-                                    print("this the db", openDatabase())
                                     self.page = "Goals"
                                 },
                             trailing:
@@ -91,7 +90,7 @@ struct ContentView: View {
                     
                     VStack{
                         NavigationLink(destination: ManualInputPage(), tag: "Manual Input", selection: $page) {EmptyView()}
-                        NavigationLink(destination: FoodAutomaticInputPage(), tag: "Fast Food Input", selection: $page) {EmptyView()}
+                        //NavigationLink(destination: FoodAutomaticInputPage(), tag: "Fast Food Input", selection: $page) {EmptyView()}
                         NavigationLink(destination: StatisticsPage(), tag: "Statistics", selection: $page) {EmptyView()}
                         
                         Button("Manual Input"){
@@ -101,13 +100,13 @@ struct ContentView: View {
                         .foregroundColor(Color(brightTextColor))
                         .padding(.bottom, 15)
                         
-                        Button("Food Automatic Input"){
-                            self.page = "Fast Food Input"
-                        }
-                        .frame(width: 200, height:20)
-                        .foregroundColor(Color(brightTextColor))
-                        .padding(.bottom, 15)
-                        
+//                        Button("Food Automatic Input"){
+//                            self.page = "Fast Food Input"
+//                        }
+//                        .frame(width: 200, height:20)
+//                        .foregroundColor(Color(brightTextColor))
+//                        .padding(.bottom, 15)
+//
                         
                         Button("Statistics"){
                             self.page = "Statistics"
