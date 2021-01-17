@@ -15,6 +15,8 @@ struct ContentView: View {
     @State private var page: String? = nil
     @State private var calories: Int = 0
     
+    @State var caloriesRemainingToday: Double = 2200.0
+    @State var caloriesToday: Double = 0.0
     
     
     var body: some View {
@@ -60,7 +62,7 @@ struct ContentView: View {
                 
                     Spacer()
                     //Pi Chart
-                    PieChartView(data: [5,10],
+                    PieChartView(data: [caloriesToday,caloriesRemainingToday],
                                  title: "Calories Consumed")
                         .frame(width:300, height: 300)
                     
