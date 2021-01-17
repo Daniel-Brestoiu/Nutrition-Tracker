@@ -24,7 +24,7 @@ import SQLite3
 
 struct ContentView: View {
     init(){
-        
+        //hardResetDB()
     }
     
     @State private var page: String? = nil
@@ -75,14 +75,14 @@ struct ContentView: View {
                         Text("Nutrition Tracker")
                             .font(.title)
                             .foregroundColor(Color(textColor))
-                        Text("Calories Today: \(calories)")
+                        Text("Calories Today: \(Int(getCaloriesConsumedToday()))")
                             .foregroundColor(Color(textColor))
                     }.padding(.top, 5)
                     .padding(.trailing, 15)
                 
                     Spacer()
                     //Pi Chart
-                    PieChartView(data: [caloriesToday,caloriesRemainingToday],
+                    PieChartView(data: [caloriesToday, caloriesRemainingToday],
                                  title: "Calories Consumed")
                         .frame(width:300, height: 300)
                     
@@ -118,7 +118,8 @@ struct ContentView: View {
                     Spacer()
                 }
                 
-            }.onAppear{
+            }
+            .onAppear{
                 caloriesRemainingToday = Double(getCaloriesRemainingToday())
                 caloriesToday = Double(getCaloriesConsumedToday())
                 caloriesGoalPerDay = Double(getCaloriesPerDay())

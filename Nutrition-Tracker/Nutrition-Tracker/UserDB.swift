@@ -67,6 +67,19 @@ func initDatabase() -> Void{
     //else create tables emptily
 }
 
+func hardResetDB() ->Void{
+    let maybeDB = openDatabase()
+
+    if let db = maybeDB{
+        do{
+            setCaloriesConsumedToday(input: 0.0)
+            setCaloriesPerDay(input: 2200.0)
+            setCaloriesRemainingToday(input: 2200.0)
+        }
+        catch{}
+    }else{}
+}
+
 func defaultPopulateDB() ->Void {
     let maybeDB = openDatabase()
     
@@ -112,7 +125,9 @@ func getCaloriesPerDay() -> Double{
     
     if let db = maybeDB{
         do{
+            
             for userInfo in try db.prepare(CurrentUserInfo){
+                print("got calories per day")
                 return userInfo[caloriesPerDay]
             }
         }
@@ -127,7 +142,7 @@ func setCaloriesRemainingToday(input:Double) -> Void{
     
     if let db = maybeDB{
         do{
-            
+            print("set calories remaining today to:" , input)
             try db.run(CurrentUserInfo.update(caloriesRemainingToday <- Int64(input)))
             
         }
@@ -140,7 +155,7 @@ func setCaloriesConsumedToday(input:Double) -> Void{
     
     if let db = maybeDB{
         do{
-            
+            print("set calories consumed today to:" , input)
             try db.run(CurrentUserInfo.update(caloriesConsumedToday <- Int64(input)))
             
         }
@@ -153,7 +168,7 @@ func setCaloriesPerDay(input:Double) -> Void{
     
     if let db = maybeDB{
         do{
-            
+            print("set calories per day to:" , input)
             try db.run(CurrentUserInfo.update(caloriesPerDay <- input))
             
         }

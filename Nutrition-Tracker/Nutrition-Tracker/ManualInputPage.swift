@@ -31,23 +31,6 @@ struct ManualInputPage: View {
         ZStack(){
             Form{
                 VStack{
-                    HStack{
-                        Text( "Number of Daily Calories:")
-                            .font(.callout)
-                            .bold()
-                        
-                        TextField("Calories", text: $inputDesiredDailyCalories)
-                            .multilineTextAlignment(.trailing)
-                            .onReceive(Just(inputDesiredDailyCalories)){
-                                newValue in
-                                let filtered = newValue.filter{"0123456789".contains($0)}
-                                if filtered != newValue{
-                                    self.inputDesiredDailyCalories = filtered
-                                }
-                            }
-                    }
-                    Divider()
-                    
                     HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/){
                         Text("Food Item:")
                             .font(.callout)
@@ -58,8 +41,6 @@ struct ManualInputPage: View {
                     }
                     Divider()
                     HStack{
-
-                        
                         Text("Number of Calories:")
                             .font(.callout)
                             .bold()
@@ -78,22 +59,22 @@ struct ManualInputPage: View {
                     Divider()
                     
                     Button("Submit"){
-                        let currentDayTime = Date()
+                        //let currentDayTime = Date()
                         
                         
                         let encodedCalories = (calories as NSString).doubleValue
                         let newCalories:Double = encodedCalories
                         
+                        
                         caloriesToday += newCalories
                         caloriesRemainingToday -= newCalories
+                        
                         
                         setCaloriesConsumedToday(input: caloriesToday)
                         setCaloriesRemainingToday(input: caloriesRemainingToday)
                         
+                        
                         //Logic for actually recording this information
-                        print(currentDayTime)
-                        print(foodItem)
-                        print(calories)
                         
                         foodItem = ""
                         calories = ""
@@ -116,8 +97,6 @@ struct ManualInputPage: View {
         }
         
     }
-    
-    
 }
 
 
