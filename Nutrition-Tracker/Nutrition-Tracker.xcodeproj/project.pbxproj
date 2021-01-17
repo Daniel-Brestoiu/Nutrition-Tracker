@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651DEFE225B3D32500597966 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 651DEFE125B3D32500597966 /* SwiftUICharts */; };
 		6599754C25B36B0C00D582B5 /* Nutrition_TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599754B25B36B0C00D582B5 /* Nutrition_TrackerApp.swift */; };
 		6599754E25B36B0C00D582B5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599754D25B36B0C00D582B5 /* ContentView.swift */; };
 		6599755025B36B0E00D582B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6599754F25B36B0E00D582B5 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651DEFE225B3D32500597966 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +151,9 @@
 			dependencies = (
 			);
 			name = "Nutrition-Tracker";
+			packageProductDependencies = (
+				651DEFE125B3D32500597966 /* SwiftUICharts */,
+			);
 			productName = "Nutrition-Tracker";
 			productReference = 6599754825B36B0C00D582B5 /* Nutrition-Tracker.app */;
 			productType = "com.apple.product-type.application";
@@ -220,6 +225,9 @@
 				Base,
 			);
 			mainGroup = 6599753F25B36B0C00D582B5;
+			packageReferences = (
+				651DEFE025B3D32500597966 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 6599754925B36B0C00D582B5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -584,6 +592,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		651DEFE025B3D32500597966 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		651DEFE125B3D32500597966 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 651DEFE025B3D32500597966 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6599754025B36B0C00D582B5 /* Project object */;
 }

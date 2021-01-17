@@ -5,6 +5,7 @@
 //  Created by Daniel Brestoiu on 2021-01-16.
 //
 
+import SwiftUICharts
 import SwiftUI
 import UIKit
 
@@ -25,7 +26,7 @@ struct ContentView: View {
         NavigationView{
             
             ZStack{
-                LinearGradient(gradient: Gradient(colors:[.white, .blue, .white]), startPoint: .top, endPoint: .bottom)
+                LinearGradient(gradient: Gradient(colors:[.white, .blue, .black]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all)
                 
                 HStack{
@@ -56,9 +57,10 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    Text("PiChart Here")
+                    //Pi Chart
+                    PieChartView(data: [5,10],
+                                 title: "Calories Consumed")
                         .frame(width:250, height: 250 )
-                        .background(Color.red)
                     
                     Spacer()
                     
