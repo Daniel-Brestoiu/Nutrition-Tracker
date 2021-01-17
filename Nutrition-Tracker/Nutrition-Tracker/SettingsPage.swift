@@ -32,7 +32,12 @@ struct SettingsPage: View{
                                         newValue in
                                         let filtered = newValue.filter{"0123456789".contains($0)}
                                         if filtered != newValue{
-                                            self.inputDesiredDailyCalories = filtered
+                                            let first8 = String(filtered.prefix(8))
+                                            self.inputDesiredDailyCalories = first8
+                                        }
+                                        if newValue.count > 8{
+                                            let first8 = String(filtered.prefix(8))
+                                            self.inputDesiredDailyCalories = first8
                                         }
                                     }
                             }

@@ -19,7 +19,7 @@ let caloriesRemainingToday = Expression<Int64>("caloriesRemainingToday")
 let caloriesConsumedToday = Expression<Int64>("caloriesConsumedToday")
 let caloriesPerDay = Expression<Double>("caloriesPerDay")
 
-//Second database
+//Second table
 let dateEaten = Expression<String>("date")
 let foodEaten = Expression<String>("food")
 let foodCalories = Expression<String>("foodCalories")
@@ -67,18 +67,18 @@ func initDatabase() -> Void{
     //else create tables emptily
 }
 
-func hardResetDB() ->Void{
-    let maybeDB = openDatabase()
-
-    if let db = maybeDB{
-        do{
-            setCaloriesConsumedToday(input: 0.0)
-            setCaloriesPerDay(input: 2200.0)
-            setCaloriesRemainingToday(input: 2200.0)
-        }
-        catch{}
-    }else{}
-}
+//func hardResetDB() ->Void{
+//    let maybeDB = openDatabase()
+//
+//    if let db = maybeDB{
+//        do{
+//            setCaloriesConsumedToday(input: 0.0)
+//            setCaloriesPerDay(input: 2200.0)
+//            setCaloriesRemainingToday(input: 2200.0)
+//        }
+//        catch{}
+//    }else{}
+//}
 
 func defaultPopulateDB() ->Void {
     let maybeDB = openDatabase()
@@ -176,3 +176,23 @@ func setCaloriesPerDay(input:Double) -> Void{
     }else{}
     
 }
+
+
+func getUserHistory() -> [String]{
+    let maybeDB = openDatabase()
+    
+    if let db = maybeDB{
+        do{
+            for userInfo in try db.prepare(UserHistory){
+                print(userInfo)
+                return [try userInfo.get(dateEaten),try userInfo.get(foodEaten),try userInfo.get(foodCalories)]
+            }
+        }
+        catch{}
+    }else{}
+    
+    return [""]
+}//beginning to work w/ second data base and statistics soon probably.
+
+
+

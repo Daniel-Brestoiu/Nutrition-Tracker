@@ -25,6 +25,7 @@ import SQLite3
 struct ContentView: View {
     init(){
         //hardResetDB()
+        print(getUserHistory())
     }
     
     @State private var page: String? = nil

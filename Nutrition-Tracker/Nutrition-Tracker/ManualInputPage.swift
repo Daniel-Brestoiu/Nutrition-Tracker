@@ -52,7 +52,12 @@ struct ManualInputPage: View {
                                 newValue in
                                 let filtered = newValue.filter{"0123456789".contains($0)}
                                 if filtered != newValue{
-                                    self.calories = filtered
+                                    let first6 = String(filtered.prefix(6))
+                                    self.calories = first6
+                                }
+                                if newValue.count > 6{
+                                    let first6 = String(filtered.prefix(6))
+                                    self.calories = first6
                                 }
                             }
                     }
