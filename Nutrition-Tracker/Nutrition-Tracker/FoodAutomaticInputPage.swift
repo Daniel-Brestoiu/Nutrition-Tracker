@@ -10,9 +10,7 @@ import SwiftUI
 
 struct FoodAutomaticInputPage: View{
     var body: some View{
-        Image("Automatic Food Input Funny haha")
-            .resizable()
-            .scaledToFit()
+        Text("Sure hope we can get API Key access in time for this")
     }
 }
 
