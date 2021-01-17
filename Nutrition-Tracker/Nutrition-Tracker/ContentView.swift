@@ -6,75 +6,96 @@
 //
 
 import SwiftUI
+import UIKit
 
 
 
 struct ContentView: View {
     @State private var page: String? = nil
+    @State private var calories: Int = 0
     
     var body: some View {
-        let screenRect = UIScreen.main.bounds
-        let screenWidth = screenRect.width
-        let screenHeight = screenRect.height
+        //let screenRect = UIScreen.main.bounds
+        //let screenWidth = screenRect.width
+        //let screenHeight = screenRect.height
+        let textColor = hexToUIColor(hex: "0008ff")
+        //let bgColor = hexToUIColor(hex: "#C1E5FF")
+        //let bgColor = hexToUIColor(hex: "#edf6ff")
         
         NavigationView{
-            let bgColor = hexToUIColor(hex: "#C1E5FF")
-            Color(bgColor)
-                .ignoresSafeArea()
-                .overlay(
-                        ZStack{
-
-                            
-                            HStack(){
-                                NavigationLink(destination: Text("Home page"), tag: "Home", selection: $page) {EmptyView()}
-                                NavigationLink(destination: Text("History page"), tag: "History", selection: $page) {EmptyView()}
-                                NavigationLink(destination: Text("Settings page"), tag: "Settings", selection: $page) {EmptyView()}
-                                NavigationLink(destination: Text("Manual Input page"), tag: "Manual Input", selection: $page) {EmptyView()}
-                                
-                                
+            
+            ZStack{
+                LinearGradient(gradient: Gradient(colors:[.white, .blue, .white]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all)
+                
+                HStack{
+                    NavigationLink(destination: SecondPage(), tag: "Home", selection: $page) {}
+                    NavigationLink(destination: Text("Settings page"), tag: "Settings", selection: $page) {}
+                        
+                        .navigationBarItems(
+                            leading:
                                 Button("Home"){
                                     self.page = "Home"
-                                }
-                                .padding(.trailing, 5)
-                                
-                                Button("History"){
-                                    self.page = "History"
-                                }
-                                .padding(.trailing, 5)
-                                
+                                },
+                            trailing:
                                 Button("Settings"){
                                     self.page = "Settings"
-                                }
-                                .padding(.trailing, 5)
-                                
-                                Button("Manual Input"){
-                                    self.page = "Manual Input"
-                                }
-                                .padding(.trailing, 5)
-                            }
-                            .frame(width: screenWidth, height: screenHeight, alignment: .top)
-                            //.background(Color.red)
-
-                            ZStack{
-                                VStack(alignment: .center){
-                                    let textColor = hexToUIColor(hex: "0008ff")
-                                    
-                                    Text("Nutrition Tracker")
-                                        .font(.title)
-                                        .foregroundColor(Color(textColor))
-                                    Text("Calories Today:")
-                                        .foregroundColor(Color(textColor))
-
-                                }
-                            }
+                                })
+                }
+                
+                
+                VStack(){
+                    VStack(){
+                        Text("Nutrition Tracker")
+                            .font(.title)
+                            .foregroundColor(Color(textColor))
+                        Text("Calories Today: \(calories)")
+                            .foregroundColor(Color(textColor))
+                    }.padding(.top, 5)
+                    .padding(.trailing, 15)
+                    
+                    Spacer()
+                    
+                    Text("PiChart Here")
+                        .frame(width:250, height: 250 )
+                        .background(Color.red)
+                    
+                    Spacer()
+                    
+                    VStack{
+                        NavigationLink(destination: Text("Manual Input page"), tag: "Manual Input", selection: $page) {EmptyView()}
+                        NavigationLink(destination: Text("Fast Food Input page"), tag: "Fast Food Input", selection: $page) {EmptyView()}
+                        NavigationLink(destination: Text("Statistics page"), tag: "Statistics", selection: $page) {EmptyView()}
+                        
+                        Button("Manual Input"){
+                            self.page = "Manual Input"
                         }
-                )
+                        .frame(width: 200, height:20)
+                        .padding(.bottom, 15)
+                        
+                        Button("Food Automatic Input"){
+                            self.page = "Fast Food Input"
+                        }
+                        .frame(width: 200, height:20)
+                        .padding(.bottom, 15)
+                        
+                        
+                        Button("Statistics"){
+                            self.page = "Statistics"
+                        }
+                        .frame(width: 200, height:20)
+                        .padding(.bottom, 50)
+                    }
+                    
+                    
+                    
+                }
+                
+            }
         }
-        
-
-    
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -105,3 +126,4 @@ func hexToUIColor(hex:String) -> UIColor{
         alpha: CGFloat(1.0)
     )
 }
+
