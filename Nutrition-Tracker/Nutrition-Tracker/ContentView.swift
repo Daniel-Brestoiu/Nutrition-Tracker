@@ -8,18 +8,35 @@
 import SwiftUICharts
 import SwiftUI
 import UIKit
+import SQLite3
+
+//do{
+//    let db = try Co\nnection ("\(path)/myDataBase.sqlite3")
+//}
+//catch{}
+
+// Table1: Daily Necessities = calories, caloriesRemainingToday, caloriesToday, caloriesPerDay, desiredDailyCalories,
+//
+// Table2: Name, Calories, Date
+
 
 
 
 struct ContentView: View {
+    init(){
+        db = openDatabase()
+    }
+    
     @State private var page: String? = nil
     @State private var calories: Int = 0
     
     @State var caloriesRemainingToday: Double = 2200.0
     @State var caloriesToday: Double = 0.0
     
-    
+    @State var db: Any?
+
     var body: some View {
+         
         //let screenRect = UIScreen.main.bounds
         //let screenWidth = screenRect.width
         //let screenHeight = screenRect.height
@@ -30,7 +47,6 @@ struct ContentView: View {
     
         
         NavigationView{
-            
             ZStack{
                 LinearGradient(gradient: Gradient(colors:[.white, .blue, .black]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all)
@@ -42,6 +58,7 @@ struct ContentView: View {
                         .navigationBarItems(
                             leading:
                                 Button("Goals"){
+                                    print("this the db", openDatabase())
                                     self.page = "Goals"
                                 },
                             trailing:

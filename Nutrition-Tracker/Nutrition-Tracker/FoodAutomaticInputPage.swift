@@ -11,6 +11,7 @@ import SwiftUI
 struct FoodAutomaticInputPage: View{
     var body: some View{
         Text("Sure hope we can get API Key access in time for this")
+        
     }
 }
 

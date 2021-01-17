@@ -12,6 +12,8 @@
 		651DEFEC25B3DCF300597966 /* ManualInputPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651DEFEB25B3DCF300597966 /* ManualInputPage.swift */; };
 		651DEFF125B3E33E00597966 /* GoalManagementPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651DEFF025B3E33E00597966 /* GoalManagementPage.swift */; };
 		651DEFF625B3E5BF00597966 /* FoodAutomaticInputPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651DEFF525B3E5BF00597966 /* FoodAutomaticInputPage.swift */; };
+		6577FDFB25B41A84003173C1 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 6577FDFA25B41A84003173C1 /* SQLite */; };
+		6577FE0025B41E21003173C1 /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6577FDFF25B41E21003173C1 /* UserDB.swift */; };
 		6599754C25B36B0C00D582B5 /* Nutrition_TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599754B25B36B0C00D582B5 /* Nutrition_TrackerApp.swift */; };
 		6599754E25B36B0C00D582B5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599754D25B36B0C00D582B5 /* ContentView.swift */; };
 		6599755025B36B0E00D582B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6599754F25B36B0E00D582B5 /* Assets.xcassets */; };
@@ -43,6 +45,7 @@
 		651DEFEB25B3DCF300597966 /* ManualInputPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualInputPage.swift; sourceTree = "<group>"; };
 		651DEFF025B3E33E00597966 /* GoalManagementPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalManagementPage.swift; sourceTree = "<group>"; };
 		651DEFF525B3E5BF00597966 /* FoodAutomaticInputPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodAutomaticInputPage.swift; sourceTree = "<group>"; };
+		6577FDFF25B41E21003173C1 /* UserDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDB.swift; sourceTree = "<group>"; };
 		6599754825B36B0C00D582B5 /* Nutrition-Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nutrition-Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6599754B25B36B0C00D582B5 /* Nutrition_TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition_TrackerApp.swift; sourceTree = "<group>"; };
 		6599754D25B36B0C00D582B5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6577FDFB25B41A84003173C1 /* SQLite in Frameworks */,
 				651DEFE225B3D32500597966 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +113,7 @@
 			children = (
 				6599754B25B36B0C00D582B5 /* Nutrition_TrackerApp.swift */,
 				6599754D25B36B0C00D582B5 /* ContentView.swift */,
+				6577FDFF25B41E21003173C1 /* UserDB.swift */,
 				651DEFF525B3E5BF00597966 /* FoodAutomaticInputPage.swift */,
 				651DEFF025B3E33E00597966 /* GoalManagementPage.swift */,
 				651DEFEB25B3DCF300597966 /* ManualInputPage.swift */,
@@ -165,6 +170,7 @@
 			name = "Nutrition-Tracker";
 			packageProductDependencies = (
 				651DEFE125B3D32500597966 /* SwiftUICharts */,
+				6577FDFA25B41A84003173C1 /* SQLite */,
 			);
 			productName = "Nutrition-Tracker";
 			productReference = 6599754825B36B0C00D582B5 /* Nutrition-Tracker.app */;
@@ -239,6 +245,7 @@
 			mainGroup = 6599753F25B36B0C00D582B5;
 			packageReferences = (
 				651DEFE025B3D32500597966 /* XCRemoteSwiftPackageReference "ChartView" */,
+				6577FDF925B41A84003173C1 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
 			productRefGroup = 6599754925B36B0C00D582B5 /* Products */;
 			projectDirPath = "";
@@ -286,6 +293,7 @@
 				6599754E25B36B0C00D582B5 /* ContentView.swift in Sources */,
 				6599754C25B36B0C00D582B5 /* Nutrition_TrackerApp.swift in Sources */,
 				6599757A25B37D4300D582B5 /* SecondPage.swift in Sources */,
+				6577FE0025B41E21003173C1 /* UserDB.swift in Sources */,
 				651DEFF625B3E5BF00597966 /* FoodAutomaticInputPage.swift in Sources */,
 				651DEFF125B3E33E00597966 /* GoalManagementPage.swift in Sources */,
 				651DEFE725B3DB9700597966 /* SettingsPage.swift in Sources */,
@@ -618,6 +626,14 @@
 				minimumVersion = 1.5.4;
 			};
 		};
+		6577FDF925B41A84003173C1 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.12.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -625,6 +641,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 651DEFE025B3D32500597966 /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
+		};
+		6577FDFA25B41A84003173C1 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6577FDF925B41A84003173C1 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
