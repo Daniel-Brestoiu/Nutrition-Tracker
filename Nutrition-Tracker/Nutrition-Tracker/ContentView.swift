@@ -24,8 +24,8 @@ import SQLite3
 
 struct ContentView: View {
     init(){
+        initDatabase()
         //hardResetDB()
-        print(getUserHistory())
     }
     
     @State private var page: String? = nil
@@ -61,7 +61,7 @@ struct ContentView: View {
                         
                         .navigationBarItems(
                             leading:
-                                Button("Goals"){
+                                Button("Help"){
                                     self.page = "Goals"
                                 },
                             trailing:

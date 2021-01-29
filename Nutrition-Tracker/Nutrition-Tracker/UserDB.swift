@@ -40,21 +40,19 @@ func openDatabase() -> Connection? {
 
 func initDatabase() -> Void{
     let maybeDB = openDatabase()
-    
-    
-    
+
     if let db = maybeDB{
         do{
-            try db.run(UserHistory.create { t in     // CREATE TABLE "CurrentUserInfo" (
-                t.column(dateEaten)   //     "id" INTEGER PRIMARY KEY NOT NULL,
+            try db.run(UserHistory.create { t in        // CREATE TABLE "CurrentUserInfo" (
+                t.column(dateEaten)                     //     "id" INTEGER PRIMARY KEY NOT NULL,
                 t.column(foodEaten)                     //     "email" TEXT UNIQUE NOT NULL,
                 t.column(foodCalories)                  //     "name" TEXT
             })
             
-            try db.run(CurrentUserInfo.create { t in     // CREATE TABLE "CurrentUserInfo" (
-                t.column(caloriesRemainingToday, primaryKey: true) //     "id" INTEGER PRIMARY KEY NOT NULL,
-                t.column(caloriesConsumedToday, unique: true)  //     "email" TEXT UNIQUE NOT NULL,
-                t.column(caloriesPerDay)                 //     "name" TEXT
+            try db.run(CurrentUserInfo.create { t in                    // CREATE TABLE "CurrentUserInfo" (
+                t.column(caloriesRemainingToday, primaryKey: true)      //     "id" INTEGER PRIMARY KEY NOT NULL,
+                t.column(caloriesConsumedToday, unique: true)           //     "email" TEXT UNIQUE NOT NULL,
+                t.column(caloriesPerDay)                                //     "name" TEXT
             })
             
             defaultPopulateDB()
@@ -97,6 +95,7 @@ func getCaloriesRemainingToday() -> Int64{
     if let db = maybeDB{
         do{
             for userInfo in try db.prepare(CurrentUserInfo){
+                print("trying to get calories remaining today")
                 return userInfo[caloriesRemainingToday]
             }
         }
